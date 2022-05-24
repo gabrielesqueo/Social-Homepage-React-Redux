@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import Navbar from './components/Navbar';
+import Navigation from './components/Navigation';
+import Feed from './components/Feed';
+import ChatContainer from './components/ChatContainer';
 import './App.css';
+import {useDispatch, useSelector} from 'react-redux';
+import { useEffect } from 'react';
+import { calculateAmount } from './features/chat/chatSlice';
+
+
+
 
 function App() {
+  const dispatch = useDispatch();
+  const {chatItems} = useSelector((state) => state.chat.chatItems)
+
+  useEffect(() => {
+    dispatch(calculateAmount())
+  }, [chatItems])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Navbar />
+        <Navigation />
+        <Feed />
+        <ChatContainer />
     </div>
   );
 }
