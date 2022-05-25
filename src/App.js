@@ -12,7 +12,7 @@ import { calculateAmount } from './features/chat/chatSlice';
 
 function App() {
   const dispatch = useDispatch();
-  const {chatItems} = useSelector((state) => state.chat.chatItems)
+  const chatItems = useSelector((state) => state.chat.chatItems)
 
   useEffect(() => {
     dispatch(calculateAmount())
@@ -21,9 +21,11 @@ function App() {
   return (
     <div className="App">
         <Navbar />
-        <Navigation />
-        <Feed />
-        <ChatContainer />
+        <div className='column-wrapper'>
+          <Navigation />
+          <Feed />
+          <ChatContainer />
+        </div>
     </div>
   );
 }

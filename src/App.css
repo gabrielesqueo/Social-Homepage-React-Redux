@@ -1,9 +1,13 @@
+body {
+  background-color: #646FD4;
+}
+
 .navbar {
   padding: 10px;
   padding-left: 20px;
   padding-right: 20px;
   display: flex;
-  background: rgb(15,11,74);
+  background: #9BA3EB;
   color: white;
 }
 
@@ -13,6 +17,19 @@
 
 .navbar--right {
   margin-left: auto;
+  display: flex;
+  position: relative;
+}
+
+.navbar--right > img {
+  height: 24px;
+  padding-top: 50%;
+}
+
+.notificationNumber {
+  position: absolute;
+  margin-top: 1px;
+  margin-left:13px;
 }
 
 .column-wrapper {
@@ -24,4 +41,34 @@
   column-width: 33vw;
   text-align: center;
   margin-top: 10px;
+}
+
+.chatitem {
+  text-align: left;
+  background-color: #DBDFFD;
+  padding-left:  3px;
+  border-radius: 5px;
+  position: relative;
+  border-style:solid;
+  border-width: 1px;
+  margin-bottom: 5px;
+}
+
+.chatitem > h4 {
+  margin-bottom: 0px;
+  margin-left: 5px;
+  margin: 5px;
+}
+
+.chatImg {
+  max-height: 20px;
+  position: absolute;
+  top:50%;
+  left: 90%;
+  margin-left: auto;
+}
+
+.chatmsg {
+  display: flex;
+  margin-left: 5px;
 }

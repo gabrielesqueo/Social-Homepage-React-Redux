@@ -6,8 +6,8 @@ import { calculateAmount } from '../features/chat/chatSlice'
 
 
 const ChatContainer = () => {
-  const {chatItems, amount} = useSelector((store) => store.chat);
-  if (amount < 1) {
+  const {chatItems, amountTotal} = useSelector((store) => store.chat);
+  if (amountTotal < 1) {
     return (
       <section className='column'>
         <header>
@@ -18,14 +18,10 @@ const ChatContainer = () => {
   }
   return (
     <section className='column'>
-      <header>
-          <h2>your chats</h2>
-      </header>
-      <div>
           {chatItems.map((item) => {return(
             <ChatItem key={item.id} {...item} />
-          )})}
-      </div>
+            )}
+          )}
     </section>
   )
 }

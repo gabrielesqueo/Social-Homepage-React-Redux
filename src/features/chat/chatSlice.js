@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import chatItems from "../../chatItems";
 const initialState = {
     chatItems: chatItems,
-    amount: 0
+    amount: 0,
+    amountTotal: 0
 };
 
 
@@ -12,17 +13,27 @@ const chatSlice = createSlice ({
     reducers: {
         calculateAmount: (state) => {
             let amount = 0;
-            console.log(state.chatItems)
+            let amountTotal = 0; 
             state.chatItems.forEach(element => {
-                amount += 1;
-                console.log(element);
-                console.log(amount);
+                !element.isRead ? amount += 1 : amount=amount;
+                amountTotal += 1;
             });
-            state.amount = amount
+            state.amount = amount;
+            state.amountTotal = amountTotal
+        },
+        setSeen: (state, {payload}) => {
+            const chatItem = state.chatItems.find((item) => item.id 
+            === payload.id);
+            chatItem.isRead = true;
+        },
+        setToSee: (state, {payload}) => {
+            const chatItem = state.chatItems.find((item) => item.id 
+            === payload.id);
+            chatItem.isRead = false;
         }
     }
 });
 
-export const {calculateAmount} = chatSlice.actions
+export const {calculateAmount, setSeen, setToSee} = chatSlice.actions
 
 export default chatSlice.reducer
