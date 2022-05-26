@@ -15,6 +15,9 @@ body {
   margin-right: auto;
 }
 
+.logoimg {
+  height:40px;
+}
 .navbar--right {
   margin-left: auto;
   display: flex;
@@ -71,4 +74,12 @@ body {
 .chatmsg {
   display: flex;
   margin-left: 5px;
+}
+
+.inputchat {
+  border-style: solid;
+  border-radius: 7px;
+  background-image: none;
+  border-color: #9BA3EB;
+  margin-bottom: 4px;
 }

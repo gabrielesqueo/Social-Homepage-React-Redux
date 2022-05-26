@@ -15,7 +15,8 @@ const chatSlice = createSlice ({
             let amount = 0;
             let amountTotal = 0; 
             state.chatItems.forEach(element => {
-                !element.isRead ? amount += 1 : amount=amount;
+                // eslint-disable-next-line no-self-assign
+                !element.isRead ? amount += 1 :  amount = amount ;
                 amountTotal += 1;
             });
             state.amount = amount;
@@ -30,10 +31,21 @@ const chatSlice = createSlice ({
             const chatItem = state.chatItems.find((item) => item.id 
             === payload.id);
             chatItem.isRead = false;
+        },
+        newChat: (state, {payload}) => {
+            let newid =  state.chatItems.length + 1;
+            state.chatItems.push ({
+                id: newid,
+                name: payload.name,
+                isRead: true,
+                lastmsg: payload.msg
+                
+            })
+            
         }
     }
 });
 
-export const {calculateAmount, setSeen, setToSee} = chatSlice.actions
+export const {calculateAmount, setSeen, setToSee, newChat} = chatSlice.actions
 
 export default chatSlice.reducer

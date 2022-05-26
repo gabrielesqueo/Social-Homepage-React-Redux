@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
 import Notification from '../static/images/notification.png'
-
+import Logo from '../static/images/logo.png'
 const Navbar = () => {
   const amount = useSelector((store)=> 
         store.chat.amount
@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <div className='navbar'>
         <div className='navbar--left'>
-            <p>navbar left</p>
+          <img src={Logo} alt='notification number'className='logoimg'/>
         </div>
         <div className='navbar--right'>
             <img src={Notification} alt='notification number'/>
