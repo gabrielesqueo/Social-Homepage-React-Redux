@@ -41,7 +41,6 @@ const chatSlice = createSlice ({
                 lastmsg: payload.msg
                 
             })
-            
         }
     }
 });

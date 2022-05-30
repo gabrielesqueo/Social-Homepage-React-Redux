@@ -27,8 +27,25 @@ const ChatContainer = () => {
             <h2>No chats available</h2>
         </header>
         <div className='chatitem'>
-          <input type='text' placeholder='Inserisci nome' className='inputchat'/> <br /> <br />
-          <input type='text' placeholder='Inserisci Messaggio' className='inputchat'/>
+        <input type='text' 
+              placeholder='Insert Name' 
+              className='inputchat' 
+              onChange={handleChange} 
+              name='name' 
+              value={newMsgData.name}
+            /> <br />
+            <input type='text' 
+              placeholder='Insert Text' 
+              className='inputchat' 
+              onChange={handleChange} 
+              name='msg' 
+              value={newMsgData.msg}
+            /> <br />
+            <input type='button' 
+              onClick={() => dispatch(newChat({name: newMsgData.name, msg: newMsgData.msg})) } 
+              className='inputchat' 
+              value ='Send Message'
+            />
         </div>
       </section>
     );
@@ -40,16 +57,16 @@ const ChatContainer = () => {
             )}
           )}
           <div className='newmsg chatitem '>
-            <h4> Scrivi un nuovo messaggio</h4>
+            <h4> Write a new message</h4>
             <input type='text' 
-              placeholder='Inserisci nome' 
+              placeholder='Insert Name' 
               className='inputchat' 
               onChange={handleChange} 
               name='name' 
               value={newMsgData.name}
             /> <br />
             <input type='text' 
-              placeholder='Inserisci Messaggio' 
+              placeholder='Insert Text' 
               className='inputchat' 
               onChange={handleChange} 
               name='msg' 
@@ -58,7 +75,7 @@ const ChatContainer = () => {
             <input type='button' 
               onClick={() => dispatch(newChat({name: newMsgData.name, msg: newMsgData.msg})) } 
               className='inputchat' 
-              value ='Invia Messaggio'
+              value ='Send Message'
             />
           </div>
     </section>
