@@ -9,15 +9,27 @@ const feedSlice = createSlice ({
     initialState,
     reducers: {
         newPost: (state, {payload}) => {
-            let newid =  state.postItems.length + 1;
-            state.postItems.push ({
+            let newid =  state.feedPosts.length + 1;
+            state.feedPosts.unshift ({
                 id: newid,
                 name: payload.name,
                 text: payload.text,
                 isLiked: false
             })
+        },
+        setLike: (state, {payload}) => {
+            const postItem = state.feedPosts.find((item) => 
+            item.id === payload.id);
+            postItem.isLiked = true;
+        },
+        setNotLiked:  (state, {payload}) => {
+            const postItem = state.feedPosts.find((item) => 
+            item.id === payload.id);
+            console.log(postItem.isLiked)
+            postItem.isLiked = false;
         }
     }
 });
 
+export const {newPost, setLike, setNotLiked} = feedSlice.actions
 export default feedSlice.reducer

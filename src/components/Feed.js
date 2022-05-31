@@ -2,7 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
 import Post from './Post'
-
+import { newPost } from '../features/feed/feedSlice'
 
 const Feed = () => {
   const { feedPosts} = useSelector((store) => store.feed);
@@ -10,9 +10,9 @@ const Feed = () => {
   const dispatch = useDispatch();
 
   function handleChange(event) {
-    setNewPostData(perPostData => {
+    setNewPostData(oldPostData => {
       return {
-        ...perPostData,
+        ...oldPostData,
         [event.target.name]: event.target.value
       }
   })}
@@ -28,6 +28,12 @@ const Feed = () => {
           name= "text"
           value = {newPostData.text} 
           placeholder= "Write here your thoughts"
+        /><br />
+        <input
+          type="button"
+          className='inputfeed'
+          onClick={() => dispatch(newPost({name: newPostData.name, text: newPostData.text}))}
+          value = "Create new post"
         />
       </div>
       {feedPosts.map((item) => {
