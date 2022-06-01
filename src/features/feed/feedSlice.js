@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { isVisible } from "@testing-library/user-event/dist/utils";
 import postItems from "../../postItems";
 const initialState = {
-    feedPosts: postItems
+    feedPosts: postItems,
+    isVisible: true
 };
 
 const feedSlice = createSlice ({
@@ -27,9 +29,12 @@ const feedSlice = createSlice ({
             item.id === payload.id);
             console.log(postItem.isLiked)
             postItem.isLiked = false;
+        },
+        setVisibility: (state) => {
+            state.isVisible ? state.isVisible = false : state.isVisible = true
         }
     }
 });
 
-export const {newPost, setLike, setNotLiked} = feedSlice.actions
+export const {newPost, setLike, setNotLiked, setVisibility} = feedSlice.actions
 export default feedSlice.reducer

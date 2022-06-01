@@ -3,7 +3,8 @@ import chatItems from "../../chatItems";
 const initialState = {
     chatItems: chatItems,
     amount: 0,
-    amountTotal: 0
+    amountTotal: 0,
+    isVisible: true
 };
 
 
@@ -41,10 +42,13 @@ const chatSlice = createSlice ({
                 lastmsg: payload.msg
                 
             })
+        },
+        setVisibilityChat: (state) => {
+            state.isVisible ? state.isVisible = false : state.isVisible = true
         }
     }
 });
 
-export const {calculateAmount, setSeen, setToSee, newChat} = chatSlice.actions
+export const {calculateAmount, setSeen, setToSee, newChat, setVisibilityChat} = chatSlice.actions
 
 export default chatSlice.reducer

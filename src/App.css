@@ -54,7 +54,8 @@ body {
   position: relative;
   border-style:solid;
   border-width: 1px;
-  margin: 5px 5px 5px 5px;
+  margin:  5px auto  5px auto;
+  width: 400px;
 }
 
 .chatitem > h4 {
@@ -111,6 +112,15 @@ body {
   height: 40px;
 }
 
+.navigationdiv {
+  width: 400px;
+  background-color: #6876f3;
+  border-radius: 5px;
+  border-style:solid;
+  border-width: 1px;
+  margin: 5px auto  5px auto;
+  color: white;
+}
 
 
 
@@ -122,5 +132,19 @@ body {
 
   .column {
     column-width: 100vw;
+  }
+  .chatitem {
+    width: 90vw;
+  }
+
+  .postitem {
+    width: 90vw;
+  }
+
+  .navigationdiv {
+    width: 90vw;
+  }
+  .navbar {
+    width: 110vw;
   }
 }

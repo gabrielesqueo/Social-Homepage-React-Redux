@@ -6,7 +6,7 @@ import { newChat } from '../features/chat/chatSlice'
 
 
 const ChatContainer = () => {
-
+  const {isVisible} = useSelector((store) => store.chat);
   const {chatItems, amountTotal} = useSelector((store) => store.chat);
   const [newMsgData, setNewMsgData] = useState({name: '', msg: ''})
   const dispatch = useDispatch();
@@ -17,8 +17,11 @@ const ChatContainer = () => {
         ...prevmsgData,
         [event.target.name]: event.target.value
       }
-      
+ 
   })}
+  if (!isVisible) {
+    return <></>
+  }
 
   if (amountTotal < 1) {
     return (

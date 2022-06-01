@@ -5,7 +5,8 @@ import Post from './Post'
 import { newPost } from '../features/feed/feedSlice'
 
 const Feed = () => {
-  const { feedPosts} = useSelector((store) => store.feed);
+  const {feedPosts} = useSelector((store) => store.feed);
+  const {isVisible} = useSelector((store) => store.feed);
   const [newPostData, setNewPostData] = useState({name: "Myself", text:""})
   const dispatch = useDispatch();
 
@@ -16,6 +17,10 @@ const Feed = () => {
         [event.target.name]: event.target.value
       }
   })}
+
+  if (!isVisible) {
+    return <></>
+  }
 
   return (
     <section className='column'>
@@ -36,7 +41,7 @@ const Feed = () => {
           value = "Create new post"
         />
       </div>
-      {feedPosts.map((item) => {
+         { feedPosts.map((item) => {
           return(
             <Post key={item.id} {...item} />
           )
